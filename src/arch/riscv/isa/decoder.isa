@@ -549,6 +549,33 @@ decode QUADRANT default Unknown::unknown() {
         }
     }
     0x3: decode OPCODE5 {
+        0x1A: decode FUNCT3 {
+            format ROp {
+                0x0: decode FUNCT7 {
+                    0x01: nestore({{
+                        Rd = Rs1_sd % Rs2_sd;
+                    }});
+                }
+            }
+        }
+        0x0a: decode FUNCT3 {
+            format ROp {
+                0x0: decode FUNCT7 {
+                    0x01: neload({{
+                        Rd = Rs1_sd % Rs2_sd;
+                    }});
+                }
+            }
+        }
+        0x16: decode FUNCT3 {
+            format ROp {
+                0x0: decode FUNCT7 {
+                    0x01: necomp({{
+                        Rd = Rs1_sd % Rs2_sd;
+                    }});
+                }
+            }
+        }
         0x00: decode FUNCT3 {
             format Load {
                 0x0: lb({{
