@@ -549,11 +549,12 @@ decode QUADRANT default Unknown::unknown() {
         }
     }
     0x3: decode OPCODE5 {
-        0x1A: decode FUNCT3 {
+        0x1a: decode FUNCT3 {
             format ROp {
                 0x0: decode FUNCT7 {
                     0x01: nestore({{
-                        Rd = Rs1_sd % Rs2_sd;
+			//Rd = Rs1_sd % Rs2_sd;
+			matrix[Rs1_sd][Rs2_sd] = Rd;
                     }});
                 }
             }
@@ -562,7 +563,8 @@ decode QUADRANT default Unknown::unknown() {
             format ROp {
                 0x0: decode FUNCT7 {
                     0x01: neload({{
-                        Rd = Rs1_sd % Rs2_sd;
+                        //Rd = Rs1_sd % Rs2_sd;
+			Rd = matrix[Rs1_sd][Rs2_sd];
                     }});
                 }
             }
@@ -571,7 +573,8 @@ decode QUADRANT default Unknown::unknown() {
             format ROp {
                 0x0: decode FUNCT7 {
                     0x01: necomp({{
-                        Rd = Rs1_sd % Rs2_sd;
+			//Rd = Rs1_sd % Rs2_sd;
+			Rd = matrix[Rs1_sd][Rs2_sd] * 5;
                     }});
                 }
             }

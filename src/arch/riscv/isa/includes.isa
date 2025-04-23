@@ -123,5 +123,6 @@ output exec {{
 namespace gem5::RiscvISAInst
 {
 using namespace RiscvISA;
+uint64_t matrix[64][64];
 } // namespace gem5::RiscvISAInst
 }};
